@@ -36,7 +36,7 @@ clint.connect().then(()=>{
 });
 
 function home (req, res){
-    res.send('Im isahq');
+    res.send('Im Reem Alqurm');
 }
 
 function getLocation(req , res){
