@@ -6,7 +6,7 @@ const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
 
-const PORT = process.env.PORT  ;
+const PORT = process.env.PORT;
 const DATABASE_URL = process.env.DATABASE_URL ;
 const GEOCODE_API_KEY = process.env.GEOCODE_API_KEY ;
 const PARKS_API_KEY = process.env.PARKS_API_KEY ;
@@ -20,6 +20,7 @@ const app = express();
 
 app.use(cors());
 
+app.get('/', home)
 app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/parks', getParks);
@@ -34,6 +35,9 @@ clint.connect().then(()=>{
 });
 });
 
+function home (req, res){
+    res.send('Im isahq');
+}
 
 function getLocation(req , res){
    const city = req.query.city;
