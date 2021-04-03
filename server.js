@@ -122,6 +122,8 @@ function getMovies(req , res){
     res.send(movies);
 }).catch(internalserverError(res));
 }
+let fi= 0;
+
 function getYelp(req , res){
     const city = req.query.search_query;
     const url = `https://api.yelp.com/v3/businesses/search` //?city=${city}&key=${PARKS_API_KEY}`;
@@ -133,7 +135,10 @@ function getYelp(req , res){
     // console.log(quryParams);
     superagent.get(url , quryParams).set('Authorization', `Bearer ${YELP_API_KEY}`).then(dataFromAPI=>{
        const restaurants = dataFromAPI.body.businesses.map(data => new Restaurant(data));
-    res.send(restaurants);
+       let ei= fi+5;
+       let pag = restaurants.slice(fi, ei);
+       fi+=5;
+    res.send(pag);
     }).catch(internalserverError(res));
 }
 function CityLocation (search_query ,formatted_query, latitude , longitude){
