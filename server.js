@@ -29,7 +29,7 @@ app.get('/yelp', getYelp);
 app.get('*', notFound);
 
 clint.connect().then(()=>{
-    app.listen(PORT , ()=> {
+    app.listen(process.env.PORT , ()=> {
     console.log(`its is a live ${PORT}`);
 });
 });
