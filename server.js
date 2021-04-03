@@ -20,7 +20,7 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', getLocation);
+app.get('/location', getLocation);
 app.get('/weather', getWeather);
 app.get('/parks', getParks);
 app.get('/movies', getMovies);
